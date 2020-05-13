@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--设置属性的时候，应该是要有顺序进行设置-->
+    <!--(properties?,settings?,typeAliases?,
+    typeHandlers?,objectFactory?,objectWrapperFactory?,
+    reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)
+    依次进行设置-->
+    <!--<properties resource="config/dbconfig.properties"/>-->
+    <settings>
+        <!--修改为false是可以使用#{0}，#{1}类型给sql赋值，否之需要使用#{args1}，#{args2}
+            前提条件是使用多参数的情况，，且没有使用@Param注解修饰变量
+            在mybatis 3.4.1 起改变了属性默认为true
+        -->
+        <setting name="useActualParamName" value="false"/>
+        <!--开启延迟加载，-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+
+        <setting name="cacheEnabled" value="true"/>
+
+        <setting name="logImpl" value="LOG4J2"/>
+    </settings>
+    <typeAliases>
+        <package name="org.mybatis.example.entity" />
+    </typeAliases>
+
+ <!--   <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>-->
+
+
+
+  <!--  <mappers>
+&lt;!&ndash;        <mapper resource="mapper/UserDao.xml"/>&ndash;&gt;
+        <package name="org.mybatis.example.dao"/>
+    </mappers>-->
+</configuration>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.dao.DepDao">
+    <cache/>
+
+    <select id="selectDep" resultType="org.mybatis.example.entity.Dep">
+        select * from dep_tab where dep_id = #{dep_id}
+    </select>
+
+    <!--使用collection集合查询，将其他方法查询的结果封装到此-->
+    <resultMap id="DepUser" type="org.mybatis.example.entity.Dep">
+        <id column="dep_id" property="dep_id"/>
+        <result column="dep_name" property="dep_name"/>
+        <collection property="list" select="org.mybatis.example.dao.UserDao.selectUserAndDepStep"
+            column="dep_id">
+
+
+        </collection>
+    </resultMap>
+
+    <select id="selectDepAndUser" resultMap="DepUser">
+
+        select * from dep_tab where dep_id = #{dep_id}
+    </select>
+</mapper>
