@@ -4,7 +4,7 @@
     <Resource name="jdbc/test"
               auth="Container"
               type="javax.sql.DataSource"
-              driverClassName="com.mysql.jdbc.Driver"
+              driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://127.0.0.1/lyddb?serverTimezone=UTC&amp;useSSL=false"
               username="root"
               password="123456"
